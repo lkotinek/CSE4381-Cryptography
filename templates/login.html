@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    
+    <div class="section">
+        <h2>Existing Users</h2>
+        <div class="userList">
+            {% if users %}
+                {% for user in users %}
+                    <div>{{ user }}</div>
+                {% endfor %}
+            {% else %}
+                <div>No registered users</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Login</h2>
+        <form method="POST" action="/login">
+            <label>Username:</label>
+            <input type="text" name="username" required><br><br>
+            
+            <label>Password:</label>
+            <input type="password" name="password" required><br><br>
+            
+            <button type="submit" name="login">Login</button>
+        </form>
+    </div>
+
+    <div class="section">
+        <h2>Register New User</h2>
+        <form method="POST" action="/login">
+            <label>New Username:</label>
+            <input type="text" name="newUsername" required><br><br>
+            
+            <label>New Password:</label>
+            <input type="password" name="newPassword" required><br><br>
+            
+            <button type="submit" name="register">Register</button>
+        </form>
+    </div>
+
+    <div class="section">
+        <h2>Delete User</h2>
+        <form method="POST" action="/login">
+            <label>Username to Delete:</label>
+            <input type="text" name="delUsername" required><br><br>
+            
+            <button type="submit" name="delete">Delete User</button>
+        </form>
+    </div>
+</body>
+</html>

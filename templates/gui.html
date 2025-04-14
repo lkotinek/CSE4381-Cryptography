@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crypto Utilities</title>
+</head>
+<body>
+    <div style="float: right;">
+        <form action="/logout" method="get">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+
+    <h1>Crypto Utilities</h1>
+
+    <h2>Password Generation</h2>
+    <form action="/generatePassword" method="post">
+        Length: <input type="number" name="length" value="16" min="8" max="64">
+        <button type="submit">Generate</button>
+    </form>
+
+    <h2>Symmetric Key</h2>
+    <form action="/generateSymmetricKey" method="post">
+        <select name="algorithm">
+            <option value="AES">AES</option>
+            <option value="3DES">3DES</option>
+        </select>
+        <select name="keySize" id="aesKeySize">
+            <option value="256">256-bit</option>
+            <option value="128">128-bit</option>
+        </select>
+        <button type="submit">Generate Key</button>
+    </form>
+
+    <h2>RSA Asymmetric Key</h2>
+    <form action="/generateKeyPair" method="post">
+        <button type="submit">Generate Key Pair</button>
+    </form>
+
+    <h2>Symmetric Encryption/Decryption</h2>
+    <form action="/encryptSymmetric" method="post" enctype="multipart/form-data">
+        File: <input type="file" name="file" required>
+        Key: <input type="file" name="keyFile" required>
+        <select name="algorithm">
+            <option value="AES">AES</option>
+            <option value="3DES">3DES</option>
+        </select>
+        <select name="mode">
+            <option value="CBC">CBC</option>
+            <option value="ECB">ECB</option>
+        </select>
+        <button type="submit">Encrypt</button>
+    </form><br>
+
+    <form action="/decryptSymmetric" method="post" enctype="multipart/form-data">
+        File: <input type="file" name="file" required>
+        Key: <input type="file" name="keyFile" required>
+        <select name="algorithm">
+            <option value="AES">AES</option>
+            <option value="3DES">3DES</option>
+        </select>
+        <select name="mode">
+            <option value="CBC">CBC</option>
+            <option value="ECB">ECB</option>
+        </select>
+        <button type="submit">Decrypt</button>
+    </form>
+
+    <h2>RSA Asymmetric Encryption/Decryption</h2>
+    <form action="/encryptAsymmetric" method="post" enctype="multipart/form-data">
+        File: <input type="file" name="file" required>
+        Public Key: <input type="file" name="publicKey" required>
+        <button type="submit">Encrypt</button>
+    </form><br>
+
+    <form action="/decryptAsymmetric" method="post" enctype="multipart/form-data">
+        File: <input type="file" name="file" required>
+        Private Key: <input type="file" name="privateKey" required>
+        <button type="submit">Decrypt</button>
+    </form>
+
+    <h2>File Hashing</h2>
+    <form action="/hashFile" method="post" enctype="multipart/form-data">
+        File: <input type="file" name="file" required>
+        <select name="algorithm">
+            <option value="SHA256">SHA-256</option>
+            <option value="SHA512">SHA-512</option>
+        </select>
+        <button type="submit">Hash</button>
+    </form>
+
+    <h2>Hash Comparison</h2>
+    <form action="/compareHashes" method="post" enctype="multipart/form-data">
+        File 1: <input type="file" name="file1" required>
+        File 2: <input type="file" name="file2" required>
+        <select name="algorithm">
+            <option value="SHA256">SHA-256</option>
+            <option value="SHA512">SHA-512</option>
+        </select>
+        <button type="submit">Compare</button>
+    </form>
+
+    <h2>Diffie-Hellman</h2>
+    <form action="/generateDhParams" method="post">
+        <button type="submit">Generate Parameters</button>
+    </form>
+    <form action="/generateDhKeyPair" method="post" enctype="multipart/form-data">
+        DH Params: <input type="file" name="dhParams" required><br>
+        <button type="submit">Generate Key Pair</button>
+    </form><br>
+    <form action="/performDh" method="post" enctype="multipart/form-data">
+        Private Key: <input type="file" name="privateKey" required><br>
+        Peer Public Key: <input type="file" name="peerPublicKey" required><br>
+        <button type="submit">Shared Secret</button>
+    </form>
+</body>
+</html>
