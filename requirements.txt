@@ -1,5 +1,3 @@
 flask
-secrets
 cryptography
-zipfile
 gunicorn 
